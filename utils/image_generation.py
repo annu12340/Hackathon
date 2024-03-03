@@ -1,6 +1,10 @@
 import base64
 import os
 import openai
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 def generate_new_image():
     print("hello") 

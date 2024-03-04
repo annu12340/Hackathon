@@ -53,7 +53,7 @@ def register_page(request):
 
 
 def landingpage(request):
-    return render(request, 'base.html')
+    return render(request, 'home.html')
 
 def dashboard(request):
 

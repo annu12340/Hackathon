@@ -1,0 +1,68 @@
+.dashboard-nav {
+   background-color: #b30f38;
+   min-height: 97vh;
+}
+
+.dashboard-compact .dashboard-nav {
+   display: none;
+}
+
+.dashboard-nav header {
+   min-height: 84px;
+   padding: 8px 27px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.dashboard-nav header .menu-toggle {
+   display: none;
+   margin-right: auto;
+}
+
+.dashboard-nav a {
+   color: #515151;
+}
+
+.dashboard-nav a:hover {
+   text-decoration: none;
+}
+
+.dashboard-nav a {
+   color: #fff;
+}
+
+.dashboard-nav-list {
+   display: flex;
+   flex-direction: column;
+}
+
+.dashboard-nav-item {
+   min-height: 56px;
+   padding: 8px 20px 8px 70px;
+   display: flex;
+   align-items: center;
+   letter-spacing: 0.02em;
+   transition: ease-out 0.5s;
+}
+
+.dashboard-nav-item i {
+   width: 36px;
+   font-size: 19px;
+   margin-left: -40px;
+}
+
+.dashboard-nav-item:hover {
+   background: rgba(255, 255, 255, 0.04);
+}
+
+.active {
+   background: rgba(0, 0, 0, 0.1);
+}
+
+.nav-item-divider {
+   height: 1px;
+   margin: 1rem 0;
+   overflow: hidden;
+   background-color: rgba(236, 238, 239, 0.3);
+}

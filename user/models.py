@@ -20,3 +20,11 @@ class Appointments(models.Model):
 
     def __str__(self):
         return "patient "+str(self.patientid)+" doctor "+str(self.doctorid)
+
+class UserDetails(models.Model):
+    userid = models.IntegerField()
+    name = models.CharField(max_length=120)
+    blood_group = models.CharField(max_length=10)
+
+    def __str__(self):
+        return "User "+str(self.userid)

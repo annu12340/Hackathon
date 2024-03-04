@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserForm
+from .forms import UserForm, UserDetailsForm
 
 from .models import User
 # from xyz.models import Abc
@@ -54,6 +54,18 @@ def register_page(request):
 
 def landingpage(request):
     return render(request, 'home.html')
+
+
+def user_details(request):
+    if request.method == 'POST':
+        form = UserDetailsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Redirect to a success page or do something else
+    else:
+        form = UserDetailsForm()
+
+    return render(request, 'user/details.html', {'form': form})
 
 def dashboard(request):
 

@@ -21,10 +21,10 @@ class Appointments(models.Model):
     def __str__(self):
         return "patient "+str(self.patientid)+" doctor "+str(self.doctorid)
 
-class UserDetails(models.Model):
-    userid = models.IntegerField()
-    name = models.CharField(max_length=120)
-    blood_group = models.CharField(max_length=10)
+class Details(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+    email = models.EmailField()
 
     def __str__(self):
-        return "User "+str(self.userid)
+        return self.name

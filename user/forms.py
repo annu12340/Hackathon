@@ -1,5 +1,5 @@
 from django import forms
-from .models import User, UserDetails
+from .models import User, Details, Appointments
 
 
 class UserForm(forms.ModelForm):
@@ -12,12 +12,13 @@ class UserForm(forms.ModelForm):
         }
 
 
-class UserDetailsForm(forms.ModelForm):
+class DetailsForm(forms.ModelForm):
     class Meta:
-        model = UserDetails
-        fields = ['userid','name', 'blood_group']
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'name'}),
-            'blood_group': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'blood_group'})
-        }
+        model = Details
+        fields = ['name', 'age', 'email']
 
+
+class AppointmentForm(forms.ModelForm):
+    class Meta:
+        model = Appointments
+        fields = ['patientid', 'patientname', 'doctorid', 'doctorurl', 'datetime', 'type', 'amount']

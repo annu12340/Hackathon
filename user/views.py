@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserForm, DetailsForm, SteganographyForm, CulpritDetailsForm
-from .models import User, ShelterHome
+from .models import User, ShelterHome, Details
 import folium, os
 
 from steganography.encode import encode
@@ -58,13 +58,12 @@ def landingpage(request):
 
 def details(request):
     if request.method == 'POST':
-        form = DetailsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('appointment_success')
-    else:
-        form = DetailsForm()
-    return render(request, 'details.html', {'form': form})
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        age = request.POST.get('age')
+        Details.objects.create(name=name, email=email, age=age)
+        return redirect('appointment_success')  
+    return render(request, 'details.html')
 
 def appointment_success(request):
     return render(request, 'appointment_success.html')

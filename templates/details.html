@@ -1,9 +1,21 @@
 {% extends 'base.html' %} {% block content %}
-<h2>Deyails</h2>
-
-<form method="post">
-   {% csrf_token %} {{ form.as_p }}
-   <button type="submit">Submit</button>
-</form>
-
+<div class="container">
+   <h2 class="heading">Details</h2>
+   <form method="post" class="my-form">
+      {% csrf_token %}
+      <div class="form-group">
+         <label for="name">Name:</label>
+         <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" />
+      </div>
+      <div class="form-group">
+         <label for="email">Email:</label>
+         <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" />
+      </div>
+      <div class="form-group">
+         <label for="age">Message:</label>
+         <input type="number" id="age" name="age" class="form-control" placeholder="Enter your age" />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+   </form>
+</div>
 {% endblock %}

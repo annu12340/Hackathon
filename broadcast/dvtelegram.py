@@ -1,4 +1,6 @@
 import logging
+import requests
+from faker import Faker
 from PIL import Image
 from io import BytesIO
 from telegram import Update
@@ -36,12 +38,29 @@ async def photoHandler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_message(chat_id=update.message.chat_id, text=message)
 
 def extract_message_from_image(image_bytes):
-    default_message = "Name: Lydia Davis, Phone: 1234567, Please help me. I am at the SW library"
+    faker = Faker('en_US')  # Set the locale to US English
+    default_message = f"Name: {faker.first_name_female()}, Phone: {faker.phone_number()}, Please help me. I am at the {faker.address()}"
 
-    # TODO: Steganography
+    # TODO: Steganography functionality here
     message = ""
+    
+    add_to_convex_db(default_message)
+    
     return message if message else default_message
 
+def add_to_convex_db(message):
+    url = "https://tame-scorpion-381.convex.cloud/api/mutation"
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = {
+        "path": "messages:send",
+        "args": {"message": message, "status": "new"},
+        "format": "json"
+    }
+    response = requests.post(url, json=data, headers=headers)
+    print(f"Convex response: {response.text}")
+    
 
 if __name__ == '__main__':
     application = ApplicationBuilder().token('7148403045:AAGjgCm2qMhGB8FoFgd7SLx8UXa5zUuozOw').build()

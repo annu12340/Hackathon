@@ -23,7 +23,6 @@ async def photoHandler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.chat.id == group_chat_id:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Image detected!")
         
-        print("Group chattttt")
         # Steganography
         if update.message.photo:
             print('photoooo')
@@ -41,13 +40,12 @@ async def photoHandler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await context.bot.send_message(chat_id=update.message.chat_id, text=message)
 
 def extract_message_from_image(image_bytes):
-    # Open the image
-    with Image.open(BytesIO(image_bytes)) as img:
-        # Extract the hidden message using steganography (implement your steganography algorithm here)
-        # For example, if you're using LSB steganography, you would extract the message from the least significant bits of the image pixels
-        # Replace this with your steganography algorithm
-        message = "This is a sample hidden message extracted from the image."
-        return message
+    default_message = "Name: Lydia Davis, Phone: 1234567, Please help me. I am at the SW library"
+
+    # TODO: Steganography
+    message = ""
+    return message if message else default_message
+
 
 if __name__ == '__main__':
     application = ApplicationBuilder().token('7148403045:AAGjgCm2qMhGB8FoFgd7SLx8UXa5zUuozOw').build()

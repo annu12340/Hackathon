@@ -1,13 +1,14 @@
 from django.urls import path
-from .views import login_page, register_page, landingpage,appointment_success, dashboard, details
+from .views import login_page, register_page, landingpage, encode_msg_into_img, appointment_success, details
 
 urlpatterns = [
 
     path('', landingpage, name='landingpage'),
     path('login/', login_page, name='login'),
     path('register/', register_page, name='register'),
-    path('dashboard/', dashboard, name='dashboard'),
 
     path('details/', details, name='details'),
     path('appointment_success/', appointment_success, name='appointment_success'),
+
+    path('encode/', encode_msg_into_img, name='encode_msg_into_img'),
 ]

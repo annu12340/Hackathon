@@ -22,3 +22,6 @@ class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointments
         fields = ['patientid', 'patientname', 'doctorid', 'doctorurl', 'datetime', 'type', 'amount']
+
+class SteganographyForm(forms.Form):
+    user_input = forms.CharField(label='Enter your input', max_length=100)

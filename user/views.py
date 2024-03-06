@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserForm, DetailsForm, AppointmentForm
+from .forms import UserForm, DetailsForm, SteganographyForm
 from .models import User
 # from xyz.models import Abc
 
+from steganography.encode import encode
 
 def user_exist(credential):
     username = credential.cleaned_data.get("username")
@@ -55,13 +56,6 @@ def landingpage(request):
     return render(request, 'home.html')
 
 
-def dashboard(request):
-
-    context = {'medications': 'medications'}
-    return render(request, 'user/dashboard.html', context)
-
-
-
 def details(request):
     if request.method == 'POST':
         form = DetailsForm(request.POST)
@@ -74,3 +68,15 @@ def details(request):
 
 def appointment_success(request):
     return render(request, 'appointment_success.html')
+
+
+def encode_msg_into_img(request):
+    if request.method == 'POST':
+        form = SteganographyForm(request.POST)
+        if form.is_valid():
+            message = form.cleaned_data['user_input']
+            encode("output", message)
+            return render(request, 'result.html', {'user_input': message})
+    else:
+        form = SteganographyForm()
+    return render(request, 'encode_msg_into_img.html', {'form': form})

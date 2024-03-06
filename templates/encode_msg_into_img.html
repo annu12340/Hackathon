@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Steganography</h2>
+
+<main>
+   <figure>
+      <picture>
+         <img src="https://img.freepik.com/free-vector/international-womens-day-background-illustration_1188-444.jpg?t=st=1709482624~exp=1709486224~hmac=a8cdc03f8d0c1ec1fd0c536f3222ddb90274087c82fa0709903a856d1dbbf87f&w=740" />
+      </picture>
+   </figure>
+   <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Submit</button>
+   </form>
+</main>
+
+{% endblock %}

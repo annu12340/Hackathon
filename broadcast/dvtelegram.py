@@ -22,7 +22,6 @@ async def photoHandler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     # Steganography
     if update.message.photo:
-        print('photoooo')
         # Get the file ID of the image
         file_id = update.message.photo[-1].file_id
         # Get the image file

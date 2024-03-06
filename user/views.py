@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserForm, DetailsForm, SteganographyForm
+from .forms import UserForm, DetailsForm, SteganographyForm, CulpritDetailsForm
 from .models import User
 # from xyz.models import Abc
 
@@ -80,3 +80,14 @@ def encode_msg_into_img(request):
     else:
         form = SteganographyForm()
     return render(request, 'encode_msg_into_img.html', {'form': form})
+
+
+def report_crime(request):
+    if request.method == 'POST':
+        form = CulpritDetailsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('appointment_success')
+    else:
+        form = CulpritDetailsForm()
+    return render(request, 'report_crime.html', {'form': form})

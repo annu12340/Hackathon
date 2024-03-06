@@ -28,3 +28,15 @@ class Details(models.Model):
 
     def __str__(self):
         return self.name
+    
+class CulpritDetails(models.Model):
+    age = models.CharField(max_length=100)
+    height = models.CharField(max_length=100)
+    weight = models.CharField(max_length=100)
+    eyes = models.CharField(max_length=100)
+    skin = models.CharField(max_length=100)
+    facial_features   = models.CharField(max_length=100)
+    physcial_features  = models.CharField(max_length=100)
+    other_details  = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name

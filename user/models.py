@@ -40,3 +40,11 @@ class CulpritDetails(models.Model):
     other_details  = models.CharField(max_length=100)
     def __str__(self):
         return self.name
+    
+class ShelterHome(models.Model):
+    name =  models.CharField(max_length=100)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    max_capacity = models.IntegerField()
+    current_capacity = models.IntegerField()
+    remaining_capacity = models.IntegerField()

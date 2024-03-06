@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserForm, DetailsForm, SteganographyForm, CulpritDetailsForm
-from .models import User
-# from xyz.models import Abc
+from .models import User, ShelterHome
+import folium, os
 
 from steganography.encode import encode
 
@@ -91,3 +91,24 @@ def report_crime(request):
     else:
         form = CulpritDetailsForm()
     return render(request, 'report_crime.html', {'form': form})
+
+
+def map(request):
+    shelter_homes = ShelterHome.objects.filter(remaining_capacity__gt=0)  # Filter ShelterHome objects with num_people > 0
+   
+    m = folium.Map(location=[22.3601, 21.0589], zoom_start=12)
+    
+    for shelter_home in shelter_homes:
+        popup_content = f'<strong>{shelter_home.name}</strong><br>'
+        popup_content += f'Max Capacity: {shelter_home.max_capacity}<br>'
+        popup_content += f'Current Capacity: {shelter_home.current_capacity}<br>'
+        popup_content += f'Remaining Capacity: {shelter_home.remaining_capacity}<br>'
+        
+        folium.Marker([shelter_home.latitude, shelter_home.longitude],
+                      popup=f'<strong>Shelter Home</strong><br>Max Capacity: {shelter_home.max_capacity}<br>Current Capacity: {shelter_home.current_capacity}',
+                      tooltip=popup_content).add_to(m)
+    
+    # Save the map as an HTML file
+    m.save(os.path.join(os.getcwd(), 'templates', 'map.html'))
+    
+    return render(request, 'map.html')

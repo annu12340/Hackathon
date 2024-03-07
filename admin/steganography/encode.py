@@ -1,5 +1,5 @@
 from PIL import Image
-from message_encoding.steganography.utils import encode_enc
+from steganography.utils import encode_enc
 
 def encode(input_image, message):
     print("---------- Encoding the message -------------")

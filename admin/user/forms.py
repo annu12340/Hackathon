@@ -1,5 +1,5 @@
 from django import forms
-from .models import User, UserDetails
+from .models import User, Details, CulpritDetails
 
 
 class UserForm(forms.ModelForm):
@@ -12,12 +12,16 @@ class UserForm(forms.ModelForm):
         }
 
 
-class UserDetailsForm(forms.ModelForm):
+class DetailsForm(forms.ModelForm):
     class Meta:
-        model = UserDetails
-        fields = ['userid','name', 'blood_group']
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'name'}),
-            'blood_group': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'blood_group'})
-        }
+        model = Details
+        fields = ['name', 'age', 'email']
 
+class SteganographyForm(forms.Form):
+    user_input = forms.CharField(label='Enter your input', max_length=100)
+
+    
+class CulpritDetailsForm(forms.ModelForm):
+    class Meta:
+        model = CulpritDetails
+        fields = '__all__'

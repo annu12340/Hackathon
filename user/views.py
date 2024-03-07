@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserForm, DetailsForm, SteganographyForm, CulpritDetailsForm
+from .forms import UserForm, CulpritDetailsForm
 from .models import User, ShelterHome, Details
 import folium, os
 
@@ -71,14 +71,16 @@ def appointment_success(request):
 
 def encode_msg_into_img(request):
     if request.method == 'POST':
-        form = SteganographyForm(request.POST)
-        if form.is_valid():
-            message = form.cleaned_data['user_input']
-            encode("output", message)
-            return render(request, 'result.html', {'user_input': message})
+        hidden_text = request.POST.get('hidden_text')
+        import_from_db = request.POST.get('import_from_db')
+        if import_from_db == "yes":
+            user_details=Details.objects.filter(name="sad")[0]
+            hidden_text += f"\n\n My name is {user_details.name}. I am staying at {user_details.name}"
+        encode("output", hidden_text)
+        return render(request, 'result.html', {'hidden_text': hidden_text, 'import_from_db': import_from_db})
     else:
-        form = SteganographyForm()
-    return render(request, 'encode_msg_into_img.html', {'form': form})
+        return render(request, 'encode_msg_into_img.html')
+
 
 
 def report_crime(request):

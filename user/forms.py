@@ -17,10 +17,6 @@ class DetailsForm(forms.ModelForm):
         model = Details
         fields = ['name', 'age', 'email']
 
-class SteganographyForm(forms.Form):
-    user_input = forms.CharField(label='Enter your input', max_length=100)
-
-    
 class CulpritDetailsForm(forms.ModelForm):
     class Meta:
         model = CulpritDetails

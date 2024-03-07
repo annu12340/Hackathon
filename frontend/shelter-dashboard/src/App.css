@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  margin-bottom: 100px;
+  height: 85%;
+  overflow-y: scroll;
 }
 
 .App-logo {
@@ -29,7 +32,6 @@
 }
 
 .center-container {
-  margin-top: 50px;
   display: flex;
   justify-content: center;
   height: 100vh;

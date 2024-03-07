@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import helloworld_program from "../helloworld/build/main.aleo?raw";
 import { AleoWorker } from "./workers/AleoWorker.js";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const aleoWorker = AleoWorker();
 const DonationForm = (
@@ -13,6 +15,7 @@ const DonationForm = (
 	const [donationAmount, setDonationAmount] = useState("");
 	const [goalReached, setGoalReached] = useState(false);
 	const [executing, setExecuting] = useState(false);
+	const notify = (notif) => toast(notif);
 
 	async function execute(amount) {
 		setExecuting(true);
@@ -25,7 +28,8 @@ const DonationForm = (
 		);
 		setExecuting(false);
 	
-		alert(JSON.stringify(result));
+		//alert(JSON.stringify(result));
+		notify(JSON.stringify(result));
 	}
 
 	const handleDonate = () => {
@@ -74,6 +78,7 @@ const DonationForm = (
 					)}
 				</div>
 			)}
+		<ToastContainer autoClose={15000} />
 		</div>
 	);
 };

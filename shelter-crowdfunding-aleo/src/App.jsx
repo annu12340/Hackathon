@@ -10,6 +10,8 @@ function App() {
   const [account, setAccount] = useState(null);
   const [executing, setExecuting] = useState(false);
   const [deploying, setDeploying] = useState(false);
+  const [goal, setGoal] = useState(1000);
+  const [amountRaised, setAmountRaised] = useState(0);
 
   const generateAccount = async () => {
     const key = await aleoWorker.getPrivateKey();
@@ -44,12 +46,69 @@ function App() {
 
   return (
     <>
-      <h1>Women's Shelter Crowdfunding</h1>
-      <div className="card">
+      <h1>Shelter Crowdfunding</h1>
+      <div>
+        <h2>Donate</h2>
+    <div style={{display:"flex", gap:"20px"}}>
+      <div style={{border:"4px solid white",  borderRadius:"20px", width:"25%"}} className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title">Women</h2>
+            <p>$50000</p>
+            <div className="card-actions justify-end">
+            <button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>Donate Now!</button>
+            </div>
+          </div>
+        </div>
+        <div style={{border:"4px solid white",  borderRadius:"20px", width:"25%"}} className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title">Children</h2>
+            <p>$50000</p>
+            <div className="card-actions justify-end">
+            <button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>Donate Now!</button>
+            </div>
+          </div>
+        </div>
+        <div style={{border:"4px solid white",  borderRadius:"20px", width:"25%"}} className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title">Sanctuary</h2>
+            <p>$50000</p>
+            <div className="card-actions justify-end">
+            <button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>Donate Now!</button>
+            </div>
+          </div>
+        </div>
+        <div style={{border:"4px solid white",  borderRadius:"20px", width:"25%"}} className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title">Adoption</h2>
+            <p>$50000</p>
+            <div className="card-actions justify-end">
+            <button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>Donate Now!</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div>
+    <dialog id="my_modal_1" className="modal">
+  <div className="modal-box">
+    <p>
+      <Project goal={50000} projectNumber={1} />
+    </p>    
+    <p className="py-4">Press ESC key or click the button below to close</p>
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button in form, it will close the modal */}
+        <button className="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+    </div>
+      </div>  
+      {/* <div className="card">
         <p>
           <Project goal={50000} projectNumber={1} />
         </p>
-      </div>
+      </div> */}
 
       <div className='footer'>
 		    <h2> © 2024 BITHack-ShelterApp. All rights reserved.</h2>

@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserForm, CulpritDetailsForm
-from .models import User, ShelterHome, Details
+from .models import User, ShelterHome, Details, CulpritDetails
 import folium, os, geocoder
 import numpy as np
-from sklearn.neighbors import BallTree
-
+from sklearn.neighbors import BallTree,NearestNeighbors
+import spacy
 from steganography.encode import encode
+
+# Load the spaCy model
+nlp = spacy.load("en_core_web_md")
 
 def user_exist(credential):
     username = credential.cleaned_data.get("username")
@@ -85,12 +88,74 @@ def encode_msg_into_img(request):
 
 
 
+def get_embedding(desc):
+    # Tokenize the description and average the word vectors to get the embedding
+    tokens = nlp(desc)
+    embedding = sum(token.vector for token in tokens) / len(tokens)
+    return embedding
+
+def find_similarity(new_desc):
+    all_descriptions= CulpritDetails.objects.filter()
+    embeddings = [get_embedding(desc) for desc in all_descriptions]
+
+    # Initialize NearestNeighbors
+    nn = NearestNeighbors(n_neighbors=2, algorithm='brute', metric='cosine')  # Using cosine distance for similarity
+
+    # Fit the data
+    nn.fit(embeddings)
+
+    new_text = new_desc
+    new_embedding = get_embedding(new_text).reshape(1, -1)  # Reshape for compatibility with NearestNeighbors
+
+    # Find similar neighbors
+    distances, indices = nn.kneighbors(new_embedding)
+    
+    print("Similar neighbors for '{}' are:".format(new_text))
+    for neighbor_index in indices[0]:
+        print(all_descriptions[neighbor_index])
+    return indices
+
 def report_crime(request):
     if request.method == 'POST':
-        form = CulpritDetailsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('appointment_success')
+        age = request.POST.get('age')
+        height = request.POST.get('height')
+        weight = request.POST.get('weight')
+        eyes = request.POST.get('eyes')
+        skin = request.POST.get('skin')
+        facial_features = request.POST.get('facial_features')
+        physical_features = request.POST.get('physical_features')
+        other_details = request.POST.get('other_details')
+        
+        details = ''
+        if age:
+            details += f'A person of age {age}. '
+        if height:
+            details += f'A person of height {height}. '
+        if weight:
+            details += f'A person of weight {weight}. '
+        if eyes:
+            details += f'A person with {eyes} eyes. '
+        if skin:
+            details += f'A person with {skin} skin. '
+        if facial_features:
+            details += f'A person with facial features: {facial_features}. '
+        if physical_features:
+            details += f'A person with physical features: {physical_features}. '
+        if other_details:
+            details += f'Additional details: {other_details}.'
+
+        # Create CulpritDetails object and save to the database
+        culprit_details = CulpritDetails.objects.create(
+            details=details
+        )
+        # find_similar_matchs=find_similarity(details)
+        find_similar_matchs = [
+        "John Doe - Age 35, Height 180cm, Weight 75kg",
+        "Jane Smith - Age 28, Height 165cm, Weight 60kg",
+        "Alex Johnson - Age 42, Height 175cm, Weight 80kg"
+    ]
+        context = {'descriptions': find_similar_matchs}
+        return render(request, 'similar_culprit.html', context)
     else:
         form = CulpritDetailsForm()
     return render(request, 'report_crime.html', {'form': form})
@@ -102,12 +167,7 @@ def get_current_gps_coordinates():
     else:
         return None
 
-
-
 def map(request):
-    shelter_homes = ShelterHome.objects.filter(remaining_capacity__gt=0) 
-    latitude, longitude = get_current_gps_coordinates()
-
     marker = folium.Map(location=[latitude, longitude], zoom_start=8)
     queryset = ShelterHome.objects.filter(remaining_capacity__gt=0)  
     database_coordinates = np.array([[obj.latitude, obj.longitude] for obj in queryset])

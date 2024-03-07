@@ -1,14 +1,7 @@
 from sklearn.neighbors import NearestNeighbors
 import spacy
 
-# Load the spaCy model
-nlp = spacy.load("en_core_web_md")
 
-def get_embedding(desc):
-    # Tokenize the description and average the word vectors to get the embedding
-    tokens = nlp(desc)
-    embedding = sum(token.vector for token in tokens) / len(tokens)
-    return embedding
 
 if __name__ == "__main__":
     descriptions = [

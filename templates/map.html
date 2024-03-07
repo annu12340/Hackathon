@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_04c4961dc39fb4f6f2c1cf9cb426f42d {
+                #map_13db2d6663b501ba957ccfb2d64dac4e {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -39,18 +39,18 @@
 <body>
     
     
-            <div class="folium-map" id="map_04c4961dc39fb4f6f2c1cf9cb426f42d" ></div>
+            <div class="folium-map" id="map_13db2d6663b501ba957ccfb2d64dac4e" ></div>
         
 </body>
 <script>
     
     
-            var map_04c4961dc39fb4f6f2c1cf9cb426f42d = L.map(
-                "map_04c4961dc39fb4f6f2c1cf9cb426f42d",
+            var map_13db2d6663b501ba957ccfb2d64dac4e = L.map(
+                "map_13db2d6663b501ba957ccfb2d64dac4e",
                 {
-                    center: [22.3601, 21.0589],
+                    center: [12.9719, 77.5937],
                     crs: L.CRS.EPSG3857,
-                    zoom: 12,
+                    zoom: 8,
                     zoomControl: true,
                     preferCanvas: false,
                 }
@@ -60,39 +60,97 @@
 
         
     
-            var tile_layer_f96c0f82096497898707c2365d172aff = L.tileLayer(
+            var tile_layer_457e4e5d77bc465b97140191c2123395 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
         
     
-            tile_layer_f96c0f82096497898707c2365d172aff.addTo(map_04c4961dc39fb4f6f2c1cf9cb426f42d);
+            tile_layer_457e4e5d77bc465b97140191c2123395.addTo(map_13db2d6663b501ba957ccfb2d64dac4e);
         
     
-            var marker_444c2f963d6f45722e921cd5248fbb53 = L.marker(
-                [23.23, 23.2],
+            var marker_f25b183052bed2e351ec1d9cb62b1e1f = L.marker(
+                [12.12, 79.432],
                 {}
-            ).addTo(map_04c4961dc39fb4f6f2c1cf9cb426f42d);
+            ).addTo(map_13db2d6663b501ba957ccfb2d64dac4e);
         
     
-        var popup_9fc216521a9b7f053e73775bc3394c2e = L.popup({"maxWidth": "100%"});
+        var popup_ca0bb69c14bf1c64e7496f40141c7cb5 = L.popup({"maxWidth": "100%"});
 
         
             
-                var html_46ad2f0e92cf0b2ed7f1fafbf0fd12bf = $(`<div id="html_46ad2f0e92cf0b2ed7f1fafbf0fd12bf" style="width: 100.0%; height: 100.0%;"><strong>Shelter Home</strong><br>Max Capacity: 10<br>Current Capacity: 1</div>`)[0];
-                popup_9fc216521a9b7f053e73775bc3394c2e.setContent(html_46ad2f0e92cf0b2ed7f1fafbf0fd12bf);
+                var html_e18c086196f4e37cb15e307f678db0cb = $(`<div id="html_e18c086196f4e37cb15e307f678db0cb" style="width: 100.0%; height: 100.0%;"><strong>Shelter Home</strong><br>Max Capacity: 12<br>Current Capacity: 12</div>`)[0];
+                popup_ca0bb69c14bf1c64e7496f40141c7cb5.setContent(html_e18c086196f4e37cb15e307f678db0cb);
             
         
 
-        marker_444c2f963d6f45722e921cd5248fbb53.bindPopup(popup_9fc216521a9b7f053e73775bc3394c2e)
+        marker_f25b183052bed2e351ec1d9cb62b1e1f.bindPopup(popup_ca0bb69c14bf1c64e7496f40141c7cb5)
         ;
 
         
     
     
-            marker_444c2f963d6f45722e921cd5248fbb53.bindTooltip(
+            marker_f25b183052bed2e351ec1d9cb62b1e1f.bindTooltip(
                 `<div>
-                     Click For More Info
+                     <strong>sfsd</strong><br>Max Capacity: 12<br>Current Capacity: 12<br>Remaining Capacity: 1<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e71c47e2063aee82f16f6d1396060fda = L.marker(
+                [11.12, 78.432],
+                {}
+            ).addTo(map_13db2d6663b501ba957ccfb2d64dac4e);
+        
+    
+        var popup_72846804e18624fe74b4ac5168d679de = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_034a3b27c93406acff5c19d0254786e6 = $(`<div id="html_034a3b27c93406acff5c19d0254786e6" style="width: 100.0%; height: 100.0%;"><strong>Shelter Home</strong><br>Max Capacity: 12<br>Current Capacity: 12</div>`)[0];
+                popup_72846804e18624fe74b4ac5168d679de.setContent(html_034a3b27c93406acff5c19d0254786e6);
+            
+        
+
+        marker_e71c47e2063aee82f16f6d1396060fda.bindPopup(popup_72846804e18624fe74b4ac5168d679de)
+        ;
+
+        
+    
+    
+            marker_e71c47e2063aee82f16f6d1396060fda.bindTooltip(
+                `<div>
+                     <strong>sfsd</strong><br>Max Capacity: 12<br>Current Capacity: 12<br>Remaining Capacity: 1<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f05bf94fcf6fb380aa7ff85006bb5c55 = L.marker(
+                [12.9719, 77.5937],
+                {}
+            ).addTo(map_13db2d6663b501ba957ccfb2d64dac4e);
+        
+    
+        var popup_74a528cd27464c17258a7cb7e9c1fa03 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a6eca6a18f4ae7d64edf56f9c36a7e5d = $(`<div id="html_a6eca6a18f4ae7d64edf56f9c36a7e5d" style="width: 100.0%; height: 100.0%;"><strong>Shelter Home</strong><br>Max Capacity: 23<br>Current Capacity: 23</div>`)[0];
+                popup_74a528cd27464c17258a7cb7e9c1fa03.setContent(html_a6eca6a18f4ae7d64edf56f9c36a7e5d);
+            
+        
+
+        marker_f05bf94fcf6fb380aa7ff85006bb5c55.bindPopup(popup_74a528cd27464c17258a7cb7e9c1fa03)
+        ;
+
+        
+    
+    
+            marker_f05bf94fcf6fb380aa7ff85006bb5c55.bindTooltip(
+                `<div>
+                     <strong>asd</strong><br>Max Capacity: 23<br>Current Capacity: 23<br>Remaining Capacity: 1<br>
                  </div>`,
                 {"sticky": true}
             );

@@ -12,6 +12,9 @@ logging.basicConfig(
     level=logging.INFO
 )
 
+def has_substring(string, substring):
+    return substring in string
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Hi there!")
     await context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
@@ -20,22 +23,26 @@ async def msgHandler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     print(update.message.text)
     
 async def photoHandler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="Image detected!")
+    print(update.message)
+    # await context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.caption)
     
     # Steganography
     if update.message.photo:
-        # Get the file ID of the image
-        file_id = update.message.photo[-1].file_id
-        # Get the image file
-        image_file = await context.bot.get_file(file_id)
-        # Download the image
-        image_bytes = await image_file.download_as_bytearray()
+        capture = "#staywoke"
+        caption = update.message.caption
+        if caption is not None and caption.strip() != "" and has_substring(caption, capture):
+            # Get the file ID of the image
+            file_id = update.message.photo[-1].file_id
+            # Get the image file
+            image_file = await context.bot.get_file(file_id)
+            # Download the image
+            image_bytes = await image_file.download_as_bytearray()
 
-        # Perform steganography
-        message = extract_message_from_image(image_bytes)
+            # Perform steganography
+            message = extract_message_from_image(image_bytes)
 
-        # Send the extracted message as a response
-        await context.bot.send_message(chat_id=update.message.chat_id, text=message)
+            # Send the extracted message as a response
+            # await context.bot.send_message(chat_id=update.message.chat_id, text=message)
 
 def extract_message_from_image(image_bytes):
     faker = Faker('en_US')  # Set the locale to US English

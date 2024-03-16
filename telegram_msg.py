@@ -1,11 +1,11 @@
-import logging
 import requests
+from steganography.decode import decode
 from faker import Faker
 from PIL import Image
 from io import BytesIO
 from telegram import Update
 from telegram.ext import filters, ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler
-from steganography.decode import decode
+
 
 def has_substring(string, substring):
     return substring in string
@@ -46,7 +46,7 @@ def extract_message_from_image(image_bytes):
     # TODO: Steganography functionality here
     message = decode(image_bytes)
 
-    add_to_convex_db(default_message)
+    # add_to_convex_db(default_message)
 
     return message if message else default_message
 

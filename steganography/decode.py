@@ -1,9 +1,7 @@
 from PIL import Image
 
 # Decode the data in the image
-def decode():
-    img = input("Enter image name(with extension) : ")
-    image = Image.open(img, 'r')
+def decode(image):
 
     data = ''
     imgdata = iter(image.getdata())

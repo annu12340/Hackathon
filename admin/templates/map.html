@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_04c4961dc39fb4f6f2c1cf9cb426f42d {
+                #map_60c63de3f40a4c8a62ee0c5b1c38a9c4 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -39,18 +39,18 @@
 <body>
     
     
-            <div class="folium-map" id="map_04c4961dc39fb4f6f2c1cf9cb426f42d" ></div>
+            <div class="folium-map" id="map_60c63de3f40a4c8a62ee0c5b1c38a9c4" ></div>
         
 </body>
 <script>
     
     
-            var map_04c4961dc39fb4f6f2c1cf9cb426f42d = L.map(
-                "map_04c4961dc39fb4f6f2c1cf9cb426f42d",
+            var map_60c63de3f40a4c8a62ee0c5b1c38a9c4 = L.map(
+                "map_60c63de3f40a4c8a62ee0c5b1c38a9c4",
                 {
-                    center: [22.3601, 21.0589],
+                    center: [12.9719, 77.5937],
                     crs: L.CRS.EPSG3857,
-                    zoom: 12,
+                    zoom: 8,
                     zoomControl: true,
                     preferCanvas: false,
                 }
@@ -60,39 +60,97 @@
 
         
     
-            var tile_layer_f96c0f82096497898707c2365d172aff = L.tileLayer(
+            var tile_layer_306e5594a05ca940b832ca96deb88eb8 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
         
     
-            tile_layer_f96c0f82096497898707c2365d172aff.addTo(map_04c4961dc39fb4f6f2c1cf9cb426f42d);
+            tile_layer_306e5594a05ca940b832ca96deb88eb8.addTo(map_60c63de3f40a4c8a62ee0c5b1c38a9c4);
         
     
-            var marker_444c2f963d6f45722e921cd5248fbb53 = L.marker(
-                [23.23, 23.2],
+            var marker_be875ffb5172a39582996fc1c10d8e5c = L.marker(
+                [12.12, 79.432],
                 {}
-            ).addTo(map_04c4961dc39fb4f6f2c1cf9cb426f42d);
+            ).addTo(map_60c63de3f40a4c8a62ee0c5b1c38a9c4);
         
     
-        var popup_9fc216521a9b7f053e73775bc3394c2e = L.popup({"maxWidth": "100%"});
+        var popup_e705b9252477462b443e5eaf4298ee33 = L.popup({"maxWidth": "100%"});
 
         
             
-                var html_46ad2f0e92cf0b2ed7f1fafbf0fd12bf = $(`<div id="html_46ad2f0e92cf0b2ed7f1fafbf0fd12bf" style="width: 100.0%; height: 100.0%;"><strong>Shelter Home</strong><br>Max Capacity: 10<br>Current Capacity: 1</div>`)[0];
-                popup_9fc216521a9b7f053e73775bc3394c2e.setContent(html_46ad2f0e92cf0b2ed7f1fafbf0fd12bf);
+                var html_6ca257b3d317ed3546e69ce843079a9d = $(`<div id="html_6ca257b3d317ed3546e69ce843079a9d" style="width: 100.0%; height: 100.0%;"><strong>Shelter Home</strong><br>Max Capacity: 120<br>Current Capacity: 100</div>`)[0];
+                popup_e705b9252477462b443e5eaf4298ee33.setContent(html_6ca257b3d317ed3546e69ce843079a9d);
             
         
 
-        marker_444c2f963d6f45722e921cd5248fbb53.bindPopup(popup_9fc216521a9b7f053e73775bc3394c2e)
+        marker_be875ffb5172a39582996fc1c10d8e5c.bindPopup(popup_e705b9252477462b443e5eaf4298ee33)
         ;
 
         
     
     
-            marker_444c2f963d6f45722e921cd5248fbb53.bindTooltip(
+            marker_be875ffb5172a39582996fc1c10d8e5c.bindTooltip(
                 `<div>
-                     Click For More Info
+                     <strong>Shelter 3</strong><br>Max Capacity: 120<br>Current Capacity: 100<br>Remaining Capacity: 20<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b76afff05dcf0d3fe020b34c58cd78d9 = L.marker(
+                [11.12, 78.432],
+                {}
+            ).addTo(map_60c63de3f40a4c8a62ee0c5b1c38a9c4);
+        
+    
+        var popup_2c048d7a0086a5d57cfbf3cfad542e2f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f28227ec9f22b0e447f083da3c230dc2 = $(`<div id="html_f28227ec9f22b0e447f083da3c230dc2" style="width: 100.0%; height: 100.0%;"><strong>Shelter Home</strong><br>Max Capacity: 600<br>Current Capacity: 150</div>`)[0];
+                popup_2c048d7a0086a5d57cfbf3cfad542e2f.setContent(html_f28227ec9f22b0e447f083da3c230dc2);
+            
+        
+
+        marker_b76afff05dcf0d3fe020b34c58cd78d9.bindPopup(popup_2c048d7a0086a5d57cfbf3cfad542e2f)
+        ;
+
+        
+    
+    
+            marker_b76afff05dcf0d3fe020b34c58cd78d9.bindTooltip(
+                `<div>
+                     <strong>Shelter 2</strong><br>Max Capacity: 600<br>Current Capacity: 150<br>Remaining Capacity: 450<br>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2674201f36ba024a1083d8188611708d = L.marker(
+                [12.9719, 77.5937],
+                {}
+            ).addTo(map_60c63de3f40a4c8a62ee0c5b1c38a9c4);
+        
+    
+        var popup_31eab8ebc7e28d4bd3e6e33462a6258f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_395281f107e01e58150ad696eb418d6b = $(`<div id="html_395281f107e01e58150ad696eb418d6b" style="width: 100.0%; height: 100.0%;"><strong>Shelter Home</strong><br>Max Capacity: 23<br>Current Capacity: 20</div>`)[0];
+                popup_31eab8ebc7e28d4bd3e6e33462a6258f.setContent(html_395281f107e01e58150ad696eb418d6b);
+            
+        
+
+        marker_2674201f36ba024a1083d8188611708d.bindPopup(popup_31eab8ebc7e28d4bd3e6e33462a6258f)
+        ;
+
+        
+    
+    
+            marker_2674201f36ba024a1083d8188611708d.bindTooltip(
+                `<div>
+                     <strong>Shelter 1</strong><br>Max Capacity: 23<br>Current Capacity: 20<br>Remaining Capacity: 3<br>
                  </div>`,
                 {"sticky": true}
             );

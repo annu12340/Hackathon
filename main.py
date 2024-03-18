@@ -88,7 +88,7 @@ class Map(Resource):
     marker.save(map_path, 'map.html')
     return send_file(map_path, mimetype='text/html')
 
-class Match(Resource):
+class Similarity(Resource):
   def post(self):
     """ 
       Return culprits with similar features
@@ -104,9 +104,9 @@ class Match(Resource):
           200:
             description: Array of culprits with similar description
     """
-        hidden_text = request.form.get('description')
-        matchs("output", hidden_text)
-        return {'message': f'Received input description: {hidden_text}'}, 200
+    hidden_text = request.form.get('description')
+    matchs("output", matchs)
+    return {'message': f'Received input description: {hidden_text}'}, 200
     
 
 
@@ -114,6 +114,7 @@ class Match(Resource):
 api.add_resource(EncodeMessage, '/encode')
 api.add_resource(DecodeMessage, '/decode')
 api.add_resource(Map, '/map')
+api.add_resource(Similarity, '/match')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -19,9 +19,9 @@ const CulpritDetails = ({ culpritId }: CulpritDetailsProps) => {
   const handleViewSimilarReport = async () => {
 
     try {
-      // const response = await fetch('http://localhost:8080/similar');
-      // const data = await response.json();
-      const data = { 'similarity': ["Culprit has Black eyes. He has Red hair. He is 30 years old. Brown skin, mole on face", "Culprit has brown eyes. He is 25 years old. Height is medium, has freckled, red hair", "Culprit has brown eyes. He is 25 years old. Height is medium, has freckled, red hair"] }
+      const response = await fetch('http://localhost:8080/similar');
+      const json_data = await response.json();
+      const data = { 'similarity': json_data }
       setSimilarReport(data);
       console.log(data);
     } catch (error) {
